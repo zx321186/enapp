@@ -1,0 +1,64 @@
+<!--
+  Generated template for the ReviewsPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ReviewsPage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <button *ngFor="let item of reviewsType;" (click)="selectList(item.str)" [ngClass]="setClasses(item.str)" ion-button color="light" small>{{item.type}}</button>
+  </div>
+  <div *ngIf="reviews_list.length==0">
+    <p>暂时没有评论</p>
+  </div>
+  <div *ngIf="reviews_list.length>0">
+    <ion-card *ngFor="let item_all of item;">
+      <ion-card-content>
+        <ion-card-title>
+          Nine Inch Nails Live
+        </ion-card-title>
+        <p>
+          {{item.type}}
+        </p>
+        <div>
+          <div *ngFor="let item_img of item_all?.geval_image_240 " class="wrap_img">
+            <div class="wrap_in">
+              <img src="{{item_img}}">
+            </div>
+          </div>
+        </div>
+      </ion-card-content>
+      <ion-row no-padding="">
+        <ion-col text-center=""  width-20 offset-50>
+          <button clear="" color="danger" icon-left="" ion-button="" small="" class="disable-hover button button-ios button-clear button-clear-ios button-small button-small-ios button-clear-ios-danger" ng-reflect-color="danger"><span class="button-inner">
+            <ion-icon name="thumbs-up" role="img" class="icon icon-ios ion-ios-musical-notes" aria-label="musical notes" ng-reflect-name="musical-notes"></ion-icon>
+            good
+          </span><div class="button-effect"></div></button>
+        </ion-col>
+        <ion-col text-center=""  width-20>
+          <button clear="" color="danger" icon-left="" ion-button="" small="" class="disable-hover button button-ios button-clear button-clear-ios button-small button-small-ios button-clear-ios-danger" ng-reflect-color="danger"><span class="button-inner">
+            <ion-icon name="share-alt" role="img" class="icon icon-ios ion-ios-share-alt" aria-label="share alt" ng-reflect-name="share-alt"></ion-icon>
+            Share
+          </span><div class="button-effect"></div></button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+  
+  <ion-infinite-scroll *ngIf="reviews_list.length>0" (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+    
+</ion-content>

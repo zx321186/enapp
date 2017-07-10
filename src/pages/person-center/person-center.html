@@ -1,0 +1,118 @@
+<!--
+  Generated template for the PersonCenter page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start tappable (click)="safe()">
+      <button ion-button icon-only>
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>个人中心</ion-title>
+    <ion-buttons end tappable (click)="message()">
+      <button ion-button icon-only>
+        <ion-icon name="text"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+
+    <img src="img/1.jpg">
+    <ion-fab>
+      <button ion-fab (click)=avatar()>
+        <ion-icon name="person"></ion-icon>
+      </button>
+    </ion-fab>
+
+    <ion-row align="center" class="msgBottom">
+      <ion-col>
+        <button ion-button icon-left clear small (click)=collectGoods()>
+          <ion-icon name=""></ion-icon>
+          <div>商品收藏</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name=""></ion-icon>
+          <div>店铺搜藏</div>
+        </button>
+      </ion-col>
+       <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name=""></ion-icon>
+          <div>融积分</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-card>
+  <ion-list no-lines>
+    <button ion-item (click)=orderList()>
+      全部订单
+    </button>  
+  </ion-list>
+  <ion-row align="center">
+    <ion-col width-20>
+      <button ion-button clear block color="dark" (click)="orderList('state_new')">
+        <div>
+          <ion-icon name="mail"></ion-icon>
+          <div>待付款</div>
+        </div>
+      </button>
+    </ion-col>
+    <ion-col width-20>
+      <button ion-button clear block color="dark" (click)="orderList('state_send')">
+        <div>
+          <ion-icon name="mail-open"></ion-icon>
+          <div>待收货</div>
+        </div>
+      </button>
+    </ion-col>
+    <ion-col width-20>
+     <button ion-button clear block color="dark" (click)="orderList('state_notakes')">
+        <div>
+          <ion-icon name="car"></ion-icon>
+          <div>待自提</div>
+        </div>
+      </button>
+    </ion-col>
+    <ion-col width-20>
+      <button ion-button clear block color="dark" (click)="orderList('state_noeval')">
+        <div>
+          <ion-icon name="text"></ion-icon>
+          <div>待评价</div>
+        </div>
+      </button>
+    </ion-col>
+    <ion-col width-20>
+      <button ion-button clear block color="dark">
+        <div>
+          <ion-icon name="logo-usd"></ion-icon>
+          <div>退/换货</div>
+        </div>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-list no-lines>
+    <button ion-item (click)=voucher()>
+      <ion-icon name="card" item-left></ion-icon>
+      优惠券
+    </button>
+  </ion-list>
+  <ion-list no-lines>  
+    <button ion-item (click)=addressAdmin()>
+      <ion-icon name="pin" item-left></ion-icon>
+      收货地址
+    </button>
+  </ion-list>
+</ion-content>

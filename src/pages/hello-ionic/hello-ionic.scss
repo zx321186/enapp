@@ -1,0 +1,17 @@
+page-hello-ionic {
+	ion-slides{height:auto;}
+	.banner .swiper-slide img {width: 100%;}
+	.type_title{text-align:center;margin:1rem 0;}
+	.header a,.new a,.mon a, .hot a{text-decoration:none;font-size: 1.4rem;}
+	.new .item-ios,.mon .item-ios {padding-left:5px;}
+	.new .item-ios.item-block .item-inner,.mon .item-ios.item-block .item-inner{padding-right:0;border:0;}
+    .mon ion-row p,.new ion-row p,.hot ion-row p{text-align:left;overflow: hidden;margin-right:2px;margin-top:3px;margin-bottom:3px;font-size: 1.4rem;line-height: normal;color: #8e9093;text-overflow: ellipsis;white-space: nowrap;}
+	.new .item-inner ,.mon .item-inner{text-align:center;}
+	.new .item-inner img,.mon .item-inner img{height:112px;}
+	.left {display: -webkit-flex;display: -ms-flexbox;display: flex;}
+	.left_img {width:50%;}
+	.left_img img{width:100%;}
+	.left_text {display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-flex: 1;-ms-flex: 1;flex: 1;}
+	.left_text .left_text_in p {margin:5px;}
+}
+

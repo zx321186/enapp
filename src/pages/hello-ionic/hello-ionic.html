@@ -1,0 +1,274 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start tappable (click)="camera()">
+      <button ion-button icon-only>
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-searchbar #input (ionInput)=search(input)  (keyup.enter)=enter(input.value) ></ion-searchbar>
+    <ion-buttons end tappable (click)="message()">
+      <button ion-button icon-only>
+        <ion-icon name="text"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-navbar *ngIf="show">
+    <ion-list no-lines>
+      <button ion-item>
+        123
+      </button>
+      <button ion-item>
+        123
+      </button>  
+      <button ion-item>
+        123
+      </button>    
+      <button ion-item>
+        123
+      </button>  
+      <button ion-item>
+        123
+      </button>  
+    </ion-list>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-slides class="banner" pager #mySlider [options]="mySlideOptions">
+    <ion-slide *ngFor="let item of banner_list?.banner_list">
+      <img id="{{item}}" src="{{item.images}}">
+    </ion-slide>
+  </ion-slides>
+  <ion-slides class="header" pager #myH [options]="myHeader">
+    <ion-slide *ngFor="let item of nav_list?.goods_class">
+      <a href="javascript:;" (click)="list_index(item.gc_id)" color="app">{{item.gc_name}}</a>
+    </ion-slide>
+  </ion-slides>
+  <!-- 新品 -->
+  <ion-list class="new">
+    <h2 class="type_title">{{new_list?.class_name}}</h2>
+    <ion-slides pager #myN [options]="myNew">
+      <ion-slide *ngFor="let item of new_list?.data?.list">
+        <a href="javascript:;" (click)="openDetail(item?.goods_id)">
+          <ion-item>
+            <img src="{{item.goods_image}}"/>
+            <p>{{item?.goods_price}}</p>
+            <p>{{item?.goods_jingle}}</p>
+          </ion-item>
+        </a>
+      </ion-slide>
+    </ion-slides>
+    <ion-grid>
+      <ion-row wrap>
+        <ion-col width-50 *ngFor="let item of new_list?.data?.two">
+           <a href="javascript:;" (click)="openSearch(item?.subhead)">
+              <img src="{{item.images}}"/>
+              <p>{{item?.title}}</p>
+              <p>{{item?.content}}</p>
+            </a>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-list *ngFor="let item of class_list|objPipe">
+    <!-- 妈妈宝贝 -->
+    <ion-list class="mon" *ngIf="item.key==1">
+      <ion-card>
+        <img src="{{item?.value?.data?.banner?.images}}"/>
+      </ion-card>
+      <h2 class="type_title">{{item?.value?.class_name}}</h2>
+      <ion-slides pager #myN [options]="myNew">
+        <ion-slide *ngFor="let item of item?.value?.data?.list">
+          <a href="javascript:;" (click)="openDetail(item.goods_id)">
+            <ion-item>
+              <img src="{{item.goods_image}}"/>
+              <p>{{item.goods_price}}</p>
+              <p>{{item.goods_jingle}}</p>
+            </ion-item>
+          </a>
+        </ion-slide>
+      </ion-slides>
+      <ion-card>
+        <img src="{{item?.value?.data?.image_text?.images}}"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{item?.value?.data?.image_text?.title}}  
+          </ion-card-title>
+          <p>
+            {{item?.value?.data?.image_text?.content}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+    <!-- 美妆个护 -->
+    <ion-list class="mon" *ngIf="item.key==3">
+      <ion-card>
+        <img src="{{item?.value?.data?.banner?.images}}"/>
+      </ion-card>
+      <h2 class="type_title">{{item?.value?.class_name}}</h2>
+      <ion-slides pager #myN [options]="myNew">
+        <ion-slide *ngFor="let item of item?.value?.data?.list">
+          <a href="javascript:;" (click)="openDetail(item.goods_id)">
+            <ion-item>
+              <img src="{{item.goods_image}}"/>
+              <p>{{item.goods_price}}</p>
+              <p>{{item.goods_jingle}}</p>
+            </ion-item>
+          </a>
+        </ion-slide>
+      </ion-slides>
+      <ion-card>
+        <img src="{{item?.value?.data?.image_text?.images}}"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{item?.value?.data?.image_text?.title}}  
+          </ion-card-title>
+          <p>
+            {{item?.value?.data?.image_text?.content}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+    <!-- 休闲美食 -->
+    <ion-list class="mon" *ngIf="item.key==256">
+      <h2 class="type_title">{{item?.value?.class_name}}</h2>
+      <div class="left">
+        <div class="left_img">
+          <img src="{{item?.value?.data?.image_text?.images}}">
+        </div>
+        <div class="left_text">
+          <div class="left_text_in">
+            <p>{{item?.value?.data?.image_text?.title}}</p>
+            <p>{{item?.value?.data?.image_text?.content}}</p>
+          </div>
+        </div>
+      </div>
+      <ion-card *ngFor="let item of item?.value?.data?.two">
+        <img src="{{item?.images}}"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{item?.title}}  
+          </ion-card-title>
+          <p>
+            {{item?.content}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+    <!-- 幸福厨房 -->
+    <ion-list class="mon" *ngIf="item.key==530">
+      <h2 class="type_title">{{item?.value?.class_name}}</h2>
+      <div class="left">
+        <div class="left_img">
+          <img src="{{item?.value?.data?.image_text?.images}}">
+        </div>
+        <div class="left_text">
+          <div class="left_text_in">
+            <p>{{item?.value?.data?.image_text?.title}}</p>
+            <p>{{item?.value?.data?.image_text?.content}}</p>
+          </div>
+        </div>
+      </div>
+      <ion-card *ngFor="let item of item?.value?.data?.two">
+        <img src="{{item?.images}}"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{item?.title}}  
+          </ion-card-title>
+          <p>
+            {{item?.content}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+    <!-- 营养保健 -->
+    <ion-list class="mon" *ngIf="item.key==593">
+      <h2 class="type_title">{{item?.value?.class_name}}</h2>
+      <ion-slides pager #myN [options]="myNew">
+        <ion-slide *ngFor="let item of item?.value?.data?.list">
+          <a href="javascript:;" (click)="openDetail(item.goods_id)">
+            <ion-item>
+              <img src="{{item.goods_image}}"/>
+              <p>{{item.goods_price}}</p>
+              <p>{{item.goods_jingle}}</p>
+            </ion-item>
+          </a>
+        </ion-slide>
+      </ion-slides>
+      <ion-card>
+        <img src="{{item?.value?.data?.image_text?.images}}"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{item?.value?.data?.image_text?.title}}  
+          </ion-card-title>
+          <p>
+            {{item?.value?.data?.image_text?.content}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+    <!-- 宠物乐园 -->
+    <ion-list class="mon" *ngIf="item.key==959">
+      <h2 class="type_title">{{item?.value?.class_name}}</h2>
+      <ion-card *ngFor="let item of item?.value?.data?.two">
+        <img src="{{item?.images}}"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{item?.title}}  
+          </ion-card-title>
+          <p>
+            {{item?.content}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+    <!-- 进口酒类 -->
+    <ion-list class="mon" *ngIf="item.key==1054">
+      <h2 class="type_title">{{item?.value?.class_name}}</h2>
+      <ion-slides pager #myN [options]="myNew">
+        <ion-slide *ngFor="let item of item?.value?.data?.list">
+          <a href="javascript:;" (click)="openDetail(item.goods_id)">
+            <ion-item>
+              <img src="{{item.goods_image}}"/>
+              <p>{{item.goods_price}}</p>
+              <p>{{item.goods_jingle}}</p>
+            </ion-item>
+          </a>
+        </ion-slide>
+      </ion-slides>
+      <ion-card>
+        <img src="{{item?.value?.data?.image_text?.images}}"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{item?.value?.data?.image_text?.title}}  
+          </ion-card-title>
+          <p>
+            {{item?.value?.data?.image_text?.content}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </ion-list>
+  <ion-list class="hot">
+    <ion-grid>
+      <ion-row wrap>
+        <ion-col width-50 *ngFor="let item of hot_list?.data?.two">
+           <a href="javascript:;" (click)="openSearch(item.goods_id)">
+              <img src="{{item.images}}"/>
+              <p>{{item.title}}</p>
+              <p>{{item.content}}</p>
+            </a>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>
+
+<ion-tabs>
+  <ion-tab tabTitle="首页" tabIcon="home" [root]="tab1"></ion-tab>
+  <ion-tab tabTitle="分类" tabIcon="search" [root]="tab2"></ion-tab>
+  <ion-tab tabTitle="购物车" tabIcon="cart" [root]="tab3"></ion-tab>
+  <ion-tab tabTitle="我的" tabIcon="contact" [root]="tab4"></ion-tab>
+</ion-tabs>

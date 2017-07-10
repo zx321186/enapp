@@ -1,0 +1,10 @@
+change-type {
+	ion-toolbar ion-grid{padding:0;}
+	ion-toolbar ion-col{padding:0 5px;}
+	ion-toolbar a {text-decoration: none;text-align:center;display:block;font-size: 12px;}
+	ion-toolbar .btn_right{line-height:26px;}
+	.checked {background:#002878!important;color:#ffffff!important;}
+	ion-input {text-align:center;}
+	ion-modal ion-backdrop {visibility:visible;z-index:0;background:#000000;}
+	ion-label {white-space: normal;padding-right:30px;}
+}

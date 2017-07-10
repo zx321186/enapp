@@ -1,0 +1,22 @@
+<!--
+  Generated template for the ChangeType component.
+
+  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+  for more info on Angular 2 Components.
+-->
+
+<div style="position:absolute;left:0;right:0;bottom:0;background:#ffffff;">
+  <ion-icon name="close" style="position:absolute;right:20px;top:0;width:20px;height:20px;background:#ccc;z-index: 100;text-align: center;line-height:20px;border-radius:50%;" (click)="dismiss()"></ion-icon>
+  <ion-list radio-group>
+    <ion-list-header align="center" radio-group>
+      本次交易需在线支付：100元
+    </ion-list-header>
+    <ion-item *ngFor="let item of arr; let i=index">
+      <ion-label>{{item.name}}</ion-label>
+      <ion-radio checked="{{i==0}}" value="{{item.value}}" (ionSelect)=payment(item.value)></ion-radio>
+    </ion-item>
+  </ion-list>
+  <ion-list padding>
+    <button ion-button block (click)="toPay()" >确认支付</button>
+  </ion-list>
+</div>

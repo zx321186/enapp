@@ -1,0 +1,7 @@
+page-order-detail {
+	.scroll-content {background:#f1f1f1;}
+	ion-list {margin-bottom:15px !important;}
+	ion-list:nth-of-type(1) ion-item {margin-bottom:10px !important;}
+	ion-list ion-item:nth-last-of-type(1){margin-bottom:0 !important;} 
+	ion-list ion-item p span {float:right;}
+}	

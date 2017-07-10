@@ -1,0 +1,99 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-menu [content]="content" side="right" type="overlay" id="filter">
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>筛选</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu> 
+
+<ion-content #content>
+
+	<ion-header>
+	  <ion-navbar>
+			<ion-searchbar #input (ionInput)="getItems(input.value)"></ion-searchbar>
+			<ion-buttons end tappable (click)="message()">
+	      <button ion-button icon-only>
+	        <ion-icon name="text"></ion-icon>
+	      </button>
+	    </ion-buttons>
+	  </ion-navbar>
+	  <ion-navbar>
+	  	<ion-grid>
+			  <ion-row>
+			    <ion-col width-33 (click)="search(input)">
+			    	<div class="center" tappable>
+			    		<ion-icon name="search" item-left></ion-icon>
+	  					<span>搜索</span>
+			    	</div>
+			    </ion-col>
+			    <ion-col width-33 tappable (click)="sort($event)">
+			    	<div class="center">
+			    		<span>{{sortText}}</span>
+			    		<ion-icon name="arrow-down" item-right></ion-icon>
+			    	</div>
+			    </ion-col>
+			    <ion-col width-33 tappable (click)="filter()">
+			    	<div class="center">
+			    		<span>筛选</span>
+			    		<ion-icon name="arrow-down" item-right></ion-icon>
+			    	</div>
+			    </ion-col> 
+			  </ion-row>
+			</ion-grid>
+	  </ion-navbar>
+	</ion-header>
+
+	<ion-content>
+
+		<ion-grid>
+		  <ion-row wrap>
+		    <ion-col width-50 *ngFor="let item of items">
+		    	<ion-card>
+				  <img src="{{item.goods_image_url}}" tappable (click)=openDetail(item.id)>
+				  <ion-card-content>
+				   <ion-item>
+					  <ion-icon name="cart" item-right large></ion-icon>
+					  <h2>{{item.goods_marketprice}}￥</h2>
+					  <h2>{{item.goods_name}}</h2>
+			      <p>{{item.goods_jingle}}</p>
+			     	</ion-item>
+				  </ion-card-content>
+				</ion-card>
+		    </ion-col>
+		  </ion-row>
+		</ion-grid>
+
+		<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+		  <ion-infinite-scroll-content
+	      loadingSpinner="bubbles"
+	      loadingText="Loading more data...">
+	    </ion-infinite-scroll-content>
+		</ion-infinite-scroll>
+		
+		<div class="search_list">
+			<ion-list>
+			  <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+			    {{ item.title }}
+			  </button>  
+			</ion-list>
+		</div>
+		
+	</ion-content>
+</ion-content>

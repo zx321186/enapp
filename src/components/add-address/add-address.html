@@ -1,0 +1,57 @@
+<!--
+  Generated template for the OrderSubmit page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button (click)=back() class="back-button disable-hover bar-button bar-button-ios back-button-ios bar-button-default bar-button-default-ios show-back-button" ion-button="bar-button" ng-reflect-klass="back-button" ng-reflect-ng-class="back-button-ios"><span class="button-inner"><ion-icon class="back-button-icon icon icon-ios back-button-icon-ios ion-ios-arrow-back" role="img" ng-reflect-klass="back-button-icon" ng-reflect-ng-class="back-button-icon-ios" aria-label="arrow back" ng-reflect-name="ios-arrow-back"></ion-icon><span class="back-button-text back-button-text-ios" ng-reflect-klass="back-button-text" ng-reflect-ng-class="back-button-text-ios">Back</span></span><div class="button-effect"></div></button>
+    <ion-title>新增收货地址</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form [formGroup]="addForm" (ngSubmit)="saveAddress(addForm.value)" novalidate>
+    <ion-list>
+      <ion-item [class.error]="!name.valid && name.touched">
+        <ion-label color="primary">
+          <ion-icon name="contacts"></ion-icon>
+          收货人姓名
+        </ion-label>
+        <ion-input placeholder="请输入姓名" [formControl]="name" clearInput=true value="{{item?.name}}"></ion-input>
+      </ion-item>
+      <p *ngIf="name.hasError('required') && name.touched" class="error-message">* 请输入用户名</p>
+      <ion-item>
+        <ion-label color="primary">
+          <ion-icon name="call"></ion-icon>
+          联系手机
+        </ion-label>
+        <ion-input type="tel" placeholder="请输入手机号码" [formControl]="phone" clearInput=true value="{{item?.phone}}"></ion-input>
+      </ion-item>
+      <p *ngIf="(phone.hasError('minlength')||phone.hasError('maxlength')||phone.hasError('pattern')) && phone.touched" class="error-message">* 请输入正确的电话号码</p>
+      <ion-item>
+        <ion-label color="primary">
+          <ion-icon name="pin"></ion-icon>
+          地区选择
+        </ion-label>
+        <ion-input placeholder="广东广州" [formControl]="position" clearInput=true value="{{item?.position}}"></ion-input>
+      </ion-item>
+      <p *ngIf="position.hasError('required') && position.touched" class="error-message">* 请选择地区</p>
+      <ion-item>
+        <ion-label color="primary">
+          <ion-icon name="home"></ion-icon>
+          详细地址
+        </ion-label>
+        <ion-input placeholder="广东广州棠东" [formControl]="address" clearInput=true value="{{item?.address}}"></ion-input>
+      </ion-item>
+      <p *ngIf="address.hasError('required') && address.touched" class="error-message">* 请输入详细地址</p>
+    </ion-list>
+    <ion-list padding>
+      <button ion-button block type="submit" [disabled]="!addForm.valid">保存地址</button>
+    </ion-list>
+  </form>
+</ion-content>

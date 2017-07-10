@@ -1,0 +1,10 @@
+page-person-center {
+	.content-ios {background:#f8f8f8;}
+	ion-card {position:relative;}
+	ion-card ion-fab{position:absolute;left:50%;top:50%;transform:translate3d(-50%,-50%,0);}
+	.msgBottom {margin-bottom:0;}
+	.card-ios{margin: 0;width: 100%;margin-bottom:10px;}
+	.list-ios,ion-row{margin-bottom: 10px;}
+	ion-row {background:#ffffff;}
+	ion-row ion-icon{font-size:1.6em;}
+}

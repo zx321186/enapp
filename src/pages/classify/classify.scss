@@ -1,0 +1,17 @@
+page-classify {
+	.aside{position:absolute;left:0;top:0;bottom:0;overflow-x:hidden;overflow-y:scroll;-webkit-overflow-scrolling: touch;will-change: scroll-position;}
+	.aside ul {padding:0;margin:0;}
+	.aside ul li {list-style:none;}
+	.aside ul li a {text-decoration:none;display:block;padding:8px 15px;}
+	.scroll-content .section {background:#f1f1f1;position:absolute;left:86px;top:0;bottom:0;right:0;overflow-x: hidden;overflow-y: scroll;-webkit-overflow-scrolling: touch;will-change: scroll-position;}
+	.scroll-content {overflow-y:hidden;}
+	.section ion-col .card-ios {margin:0;width:100%;}
+	ion-col .card-content-ios,ion-col .card-content-md{padding:0;}
+	.section>ion-grid{    margin: 12px 12px 12px 12px;    width: calc(100% - 24px);padding:0;}
+	.section ion-grid .item-ios,.section ion-grid .item-ios.item-block .item-inner {padding:0;text-align:center;}
+	.section ion-grid ion-list ion-list {background:#ffffff;overflow:hidden;}
+	.section ion-grid .label-ios{margin:0;}
+	.section ion-grid ion-list ion-col {overflow:hidden;}
+	.section ion-grid ion-list h3{text-align:center;}
+	.section ion-grid ion-list ion-col p{margin: 0 0 2px;font-size: 1.4rem;line-height: normal;white-space: nowrap;color: #8e9093;text-overflow: ellipsis;overflow:hidden;text-align:center;}
+}

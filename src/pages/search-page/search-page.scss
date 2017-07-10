@@ -1,0 +1,12 @@
+page-search-page {
+	.center{text-align:center;position:relative;}
+	.search_list{position:absolute;left:0;top:0;right:0;bottom:0;background:#ffffff;display:none;}
+	.nav_more{position:absolute;top:100%;left:0;right:0;}
+	.more_bg{position:fixed;top:0;left:0;right:0;bottom:0;}
+	.scroll-content .scroll-content ion-grid{margin-top:20px;}
+	ion-col .card-content-ios,ion-col .card-content-md{padding:0;}
+	.card-ios{margin:0;width:100%;}
+	ion-card {box-shadow:none !important;}
+	ion-grid .item-ios{padding-left:0;}
+	ion-grid .item-ios [item-right] {margin:0;}
+}
